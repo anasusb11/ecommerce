@@ -47,7 +47,7 @@
           @enderror
 
 
-          <input type="text" class="input" placeholder="Birth Date"  name="phone" required>
+          <input type="text" class="input" placeholder="Phone Number"  name="phone" required>
 
           @error('phone')
               <span class="invalid-feedback" role="alert">
