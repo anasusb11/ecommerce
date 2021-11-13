@@ -20,16 +20,14 @@
       <div class="content">
         <!-- Data User -->
       <label for="">Name</label>
-      <p></p>
+      <p>{{ Auth::user()->name }}</p>
       <label for="">Email</label>
-      <p></p>
+      <p>{{ Auth::user()->email }}</p>
       <label for="">Address</label>
+      <p>{{ Auth::user()->address }}</p>
       <p></p>
-      <label for="">Date of Birth</label>
-      <p></p>
-      <label for="">Gender</label>
-      <p></p>
-      <label for="">Account Balance</label>
+      <label for="">Phone</label>
+      <p>{{ Auth::user()->address }}</p>
       <!-- TopUp -->
       {{-- @if($topup == null)
       <p style="color:red">Havent top up yet</p>
