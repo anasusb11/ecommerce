@@ -34,7 +34,7 @@
           <div class="row list-product">
             @foreach ($products as $product)
                 <div class="col-lg-4 item mb-5">
-              <a href="/shop/detail">
+              <a href="/shop/detail/{{ $product->id }}">
               <img src="{{asset($product->image)}}" alt="nopic" height="180" width="180">
               </a>
               <p class="product-name mt-3 font-weight-bold"><a href="">{{ $product->name }}</a></p>

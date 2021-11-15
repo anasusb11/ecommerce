@@ -19,5 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/shop', 'ShopController@index')->middleware('auth');
-Route::get('/shop/detail', 'ShopController@show')->middleware('auth');
+Route::get('/shop/detail/{id}', 'ShopController@show')->middleware('auth');
 Route::get('/cart', 'CartController@index')->middleware('auth');

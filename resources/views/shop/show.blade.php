@@ -10,22 +10,22 @@
 
 @section('content')
 <div class="container">
-  <h2 class="title">Product 3</h2>
+  <h2 class="title">{{ $product->name }}</h2>
   <hr>
   <div class="row">
     <div class="wrapper">
       <div class="col-lg-4" id="picture">
-      <img src="{{asset('storage/images/product.jpg')}}" alt="" height="200" width="200">
+      <img src="{{asset($product->image)}}" alt="" height="200" width="200">
       </div>
     </div>
     <div class="col-lg-4 desc">
       <h4 id="description">Description</h4>
-      <p>Deskripsi Product</p>
+      <p class="mt-3">{{ $product->desc }}</p>
     </div>
     <div class="col-lg-4">
       <div class="kartu">
         <p>Harga</p>
-        <h2>Rp2000000</h2>
+        <h2>Rp {{ number_format($product->price) }}</h2>
         <form action="" method="POST">
         @csrf
         <input type="hidden" value="" name="item_id">
