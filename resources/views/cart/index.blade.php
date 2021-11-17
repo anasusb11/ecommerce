@@ -11,12 +11,23 @@
 @section('content')
 <div class="container">
     <!-- success message & Error message -->
+    @if (Session::has('success'))
+    <div class="alert alert-success" role="alert">
+        {{ Session::get('success') }}
+    </div>
+    @endif
+
+    @if (Session::has('error'))
+    <div class="alert alert-danger" role="alert">
+        {{ Session::get('error') }}
+    </div>
+    @endif
         @php
             $total = 0;    
         @endphp
-    {{-- @if ($carts->count() == 0)
+    @if ($carts->count() == 0)
     <p style="text-align:center;">Your Cart is Empty</p>
-    @else --}}
+    @endif
 <div>
     <h3>{{ $carts->count() }} Item(s) in your cart</h3>
 </div>
