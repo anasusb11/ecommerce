@@ -11,14 +11,14 @@
 @section('content')
 <div class="container">
     <!-- success message & Error message -->
-        {{-- @php
+        @php
             $total = 0;    
-        @endphp --}}
+        @endphp
     {{-- @if ($carts->count() == 0)
     <p style="text-align:center;">Your Cart is Empty</p>
     @else --}}
 <div>
-    <h3>1 Item in your cart</h3>
+    <h3>{{ $carts->count() }} Item(s) in your cart</h3>
 </div>
 @foreach ($carts as $cart)
 <div class="cart">
@@ -61,12 +61,12 @@
             </div>
         </div>
     </div>
+    @php
+    $total += ($cart->product->price * $cart->qty);
+    @endphp
     @endforeach
-    {{-- @php
-    $total += ($cart->item->price * $cart->quantity);
-    @endphp --}}
 <div class="totalz">
-    <h4 class="total-price">Total Price: Rp10000000</h4>
+    <h4 class="total-price">Total Price: <strong> Rp {{ number_format($total) }} </strong></h4>
 </div>
 </div>
 
