@@ -23,3 +23,4 @@ Route::get('/shop/detail/{id}', 'ShopController@show')->middleware('auth');
 Route::get('/cart', 'CartController@index')->middleware('auth');
 Route::get('/shop/category/{id}', 'ShopController@category')->middleware('auth');
 Route::post('/cart/store', 'CartController@store')->middleware('auth');
+Route::patch('/cart/{id}', 'CartController@update')->middleware('auth');

@@ -10,7 +10,8 @@ class CartController extends Controller
 {
     public function index()
     {
-        return view('cart.index');
+        $carts = Cart::all();
+        return view('cart.index', compact('carts'));
     }
 
     public function store(Request $request)
@@ -23,5 +24,17 @@ class CartController extends Controller
         ]);
 
         return redirect('/cart');
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        Cart::where('id', $id)->update([
+            'qty' => $request->quantity
+        ]);
+
+        return response()->json([
+            'success' => true
+        ]);
     }
 }

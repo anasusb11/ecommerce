@@ -20,7 +20,7 @@
 <div>
     <h3>1 Item in your cart</h3>
 </div>
-
+@foreach ($carts as $cart)
 <div class="cart">
         <div class="row">
             <div class="col-lg-3">
@@ -28,16 +28,16 @@
             </div>
             <div class="col-lg-9">
                 <div class="top">
-                    <p class="item-name">Nama Produk</p>
+                    <p class="item-name">{{ $cart->product->name }}</p>
                     <div class="top-right">
-                        <p class="">Rp200000</p>
-                        <select name="qty" class="quantity" data-item="id-cartnya">
+                        <p class="">Rp {{ number_format($cart->product->price) }}</p>
+                        <select name="qty" class="quantity" data-item="{{ $cart->id }}">
                         @for ($i = 1; $i <= 10; $i++)
-                            <option value="{{$i}}">{{$i}}</option>
+                            <option value="{{$i}}"  {{$cart->qty == $i ? 'selected' : ''}}>{{$i}}</option>
                         @endfor
                         </select>
                         <!-- Subtotal -->
-                        <p class="total-item">RpSubtotal</p>
+                        <p class="total-item">Rp {{ number_format($cart->product->price * $cart->qty) }}</p>
                     </div>
                 </div>
                 <hr class="mt-2 mb-2">
@@ -61,6 +61,7 @@
             </div>
         </div>
     </div>
+    @endforeach
     {{-- @php
     $total += ($cart->item->price * $cart->quantity);
     @endphp --}}
@@ -84,13 +85,13 @@
     Array.from(classname).forEach(function(element){
      element.addEventListener('change', function(){
         const id = element.getAttribute('data-item');
-        axios.patch(``, {
+        axios.patch(`/cart/${id}`, {
             quantity: this.value,
             id: id
           })
           .then(function (response) {
             //console.log(response);
-            window.location.href = ''
+            window.location.href = '/cart'
           })
           .catch(function (error) {
             console.log(error);
