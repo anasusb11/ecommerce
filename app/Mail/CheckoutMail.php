@@ -16,10 +16,10 @@ class CheckoutMail extends Mailable
      *
      * @return void
      */
-    public $product;
-    public function __construct($product)
+    public $carts;
+    public function __construct($carts)
     {
-        $this->product = $product;
+        $this->carts = $carts;
     }
 
     /**

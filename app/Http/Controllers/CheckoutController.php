@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Cart;
 use App\Transaction;
+use Mail;
+use App\Mail\CheckoutMail;
 
 class CheckoutController extends Controller
 {
@@ -26,7 +28,9 @@ class CheckoutController extends Controller
             ]);
         }
 
-        $carts->delete();
+        Mail::to($carts->first()->user->email)->send(new CheckoutMail($cartUser));
+
+        Cart::where('user_id', Auth::user()->id)->delete();
         return redirect('/');
     }
 }
